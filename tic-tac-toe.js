@@ -4,6 +4,9 @@ window.onload = function() {
     for (i=0;i<=9;i++){
     squares[i].classList.add("square",i);
     squares[i].addEventListener("click",fillSqaure);
+    squares[i].addEventListener("mouseover",changeSquare);
+    squares[i].addEventListener("mouseout",changeSquareBack);
+    
     
 }
 }
@@ -22,4 +25,17 @@ function fillSqaure(x){
     document.querySelectorAll("#board div")[clickedSquare].classList.add("square","O", clickedSquare);
     gameprogress.push("O");
     
+   }}
+
+   function changeSquare(x) {
+       const hoveredSquare = x.target.classList[1];
+       if (x[0]="square" && gameprogress.length < 9){
+        document.querySelectorAll("#board div")[hoveredSquare].classList.add("hover");
+       }
+   }
+   function changeSquareBack(x){
+        const unhoveredSquare = x.target.classList[1];
+        if (x[2]="hover"){
+        document.querySelectorAll("#board div")[unhoveredSquare].classList.remove(x[2]);
+        document.querySelectorAll("#board div")[unhoveredSquare].classList.add("hover O");
    }}
