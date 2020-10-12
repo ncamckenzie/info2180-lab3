@@ -1,13 +1,17 @@
 window.onload = function() {
     var i;
+    document.querySelector("button").addEventListener("click",resetGame);
     var squares = document.querySelectorAll("#board div");
     for (i=0;i<=9;i++){
     squares[i].classList.add("square",i);
     squares[i].addEventListener("click",fillSqaure);
     squares[i].addEventListener("mouseover",changeSquare);
     squares[i].addEventListener("mouseout",changeSquareBack);
+    
+
 
 }
+
 }
 
 let gameprogress = [];
@@ -80,4 +84,15 @@ function gameWinner(){
     }
     }
 
-
+function resetGame(x){
+    gameprogress = [];
+    document.getElementById("status").innerHTML = "Move your mouse over a square and click to play an X or an O.";
+    document.getElementById("status").classList.remove("you-won");
+    var j;
+    var removalList = document.querySelectorAll("#board div");
+    for (j=0;j<=9;j++){
+        removalList[j].innerHTML = "";
+        removalList[j].classList.remove("X","O");
+    }
+    
+}
