@@ -21,12 +21,14 @@ function fillSqaure(x){
     if (gameprogress.length < 9 && gameprogress.length % 2 == 0){
     document.querySelectorAll("#board div")[clickedSquare].innerHTML = "X";
     document.querySelectorAll("#board div")[clickedSquare].classList.add("square", "X", clickedSquare);
+    document.querySelectorAll("#board div")[clickedSquare].removeEventListener("click",fillSqaure);
     gameprogress.push("X");
 
     }
    else if (gameprogress.length < 9 && gameprogress.length % 2 != 0){
     document.querySelectorAll("#board div")[clickedSquare].innerHTML = "O";
     document.querySelectorAll("#board div")[clickedSquare].classList.add("square","O", clickedSquare);
+    document.querySelectorAll("#board div")[clickedSquare].removeEventListener("click",fillSqaure);
     gameprogress.push("O");
     
    }
@@ -46,16 +48,6 @@ function fillSqaure(x){
         document.querySelectorAll("#board div")[unhoveredSquare].classList.add("hover O");
    }}
 
-const winningPattern = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
 
 
 
@@ -93,6 +85,7 @@ function resetGame(x){
     for (j=0;j<=9;j++){
         removalList[j].innerHTML = "";
         removalList[j].classList.remove("X","O");
+        removalList[j].addEventListener("click",fillSqaure);
     }
     
 }
